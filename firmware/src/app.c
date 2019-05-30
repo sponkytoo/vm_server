@@ -111,7 +111,7 @@ APP_DATA appData;
 
 void APP_Initialize(void) {
     /* Place the App state machine in its initial state. */
-    appData.state = APP_TCPIP_WAIT_INIT;
+    appData.state = APP_START_CASE;
 
     /* TODO: Initialize your application's state machine and other
      * parameters.
@@ -139,6 +139,13 @@ void APP_Tasks(void) {
 
     SYS_CMD_READY_TO_READ();
     switch (appData.state) {
+        
+        case APP_START_CASE:
+            SYS_CONSOLE_PRINT("\n\r==========================================================\r\n");
+            SYS_CONSOLE_PRINT("tcpip_tcp_server_freertos_vm_server %s %s\r\n", __DATE__, __TIME__);
+            appData.state = APP_TCPIP_WAIT_INIT;
+            break;        
+        
         case APP_TCPIP_WAIT_INIT:
             tcpipStat = TCPIP_STACK_Status(sysObj.tcpip);
             if (tcpipStat < 0) { // some error occurred

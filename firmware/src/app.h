@@ -77,6 +77,7 @@
 
 typedef enum
 {
+    APP_START_CASE,
     /* In this state, the application waits for the initialization of the TCP/IP stack
      * to complete. */
     APP_TCPIP_WAIT_INIT,
