@@ -168,6 +168,7 @@ void APP_Tasks(void) {
 #endif  // defined(TCPIP_STACK_USE_NBNS)
 
                 }
+                SYS_CONSOLE_PRINT("\r\nWaiting for Client Connection on port: %d\r\n", SERVER_PORT);
                 appData.state = APP_TCPIP_WAIT_FOR_IP;
 
             }
@@ -191,13 +192,13 @@ void APP_Tasks(void) {
                     SYS_CONSOLE_MESSAGE(TCPIP_STACK_NetNameGet(netH));
                     SYS_CONSOLE_MESSAGE(" IP Address: ");
                     SYS_CONSOLE_PRINT("%d.%d.%d.%d \r\n", ipAddr.v[0], ipAddr.v[1], ipAddr.v[2], ipAddr.v[3]);
-                }
+                }                
                 appData.state = APP_TCPIP_OPENING_SERVER;
             }
             break;
         case APP_TCPIP_OPENING_SERVER:
         {
-            SYS_CONSOLE_PRINT("\r\nWaiting for Client Connection on port: %d\r\n", SERVER_PORT);
+            //SYS_CONSOLE_PRINT("\r\nWaiting for Client Connection on port: %d\r\n", SERVER_PORT);
             appData.socket = TCPIP_TCP_ServerOpen(IP_ADDRESS_TYPE_IPV4, SERVER_PORT, 0);
             if (appData.socket == INVALID_SOCKET) {
                 SYS_CONSOLE_MESSAGE("Couldn't open server socket\r\n");
@@ -214,7 +215,7 @@ void APP_Tasks(void) {
             } else {
                 // We got a connection
                 appData.state = APP_TCPIP_SERVING_CONNECTION;
-                SYS_CONSOLE_MESSAGE("Received a connection\r\n");
+                //SYS_CONSOLE_MESSAGE("Received a connection\r\n");
             }
         }
             break;
@@ -243,7 +244,7 @@ void APP_Tasks(void) {
         {
             // Close the socket connection.
             TCPIP_TCP_Close(appData.socket);
-            SYS_CONSOLE_MESSAGE("Connection was closed\r\n");
+            //SYS_CONSOLE_MESSAGE("Connection was closed\r\n");
             appData.socket = INVALID_SOCKET;
             appData.state = APP_TCPIP_WAIT_FOR_IP;
 
