@@ -167,6 +167,17 @@ extern "C" {
 #define TCPIP_STACK_USE_ICMP_SERVER
 #define TCPIP_ICMP_ECHO_ALLOW_BROADCASTS    false
 
+/*** ICMPv4 Client Configuration ***/
+#define TCPIP_STACK_USE_ICMP_CLIENT
+#define TCPIP_ICMP_CLIENT_USER_NOTIFICATION   true
+#define TCPIP_ICMP_ECHO_REQUEST_TIMEOUT       500
+#define TCPIP_ICMP_TASK_TICK_RATE             33
+
+
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
+
 
 
 /*** TCP Configuration ***/
@@ -234,7 +245,7 @@ extern "C" {
 #define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0	"GMAC"
 #define TCPIP_IF_GMAC
 
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0				"MCHPBOARD_C"
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0				"VM_SERVER"
 #define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0				"00:04:25:1C:A0:02"
 
 #define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0			"192.168.100.11"
@@ -249,6 +260,18 @@ extern "C" {
 													TCPIP_NETWORK_CONFIG_IP_STATIC
 													
 #define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0			DRV_GMAC_Object
+
+
+
+/*** iperf Configuration ***/
+#define TCPIP_STACK_USE_IPERF
+#define TCPIP_IPERF_TX_BUFFER_SIZE		4096
+#define TCPIP_IPERF_RX_BUFFER_SIZE  	4096
+#define TCPIP_IPERF_TX_WAIT_TMO     	100
+#define TCPIP_IPERF_TX_QUEUE_LIMIT  	2
+#define TCPIP_IPERF_TIMING_ERROR_MARGIN 0
+#define TCPIP_IPERF_MAX_INSTANCES       1
+#define TCPIP_IPERF_TX_BW_LIMIT  		1
 
 
 
@@ -416,6 +439,14 @@ extern "C" {
 
 #define DRV_GMAC_INTERRUPT_MODE        				true
 #define DRV_GMAC_RMII_MODE					0
+
+
+
+/*** announce Configuration ***/
+#define TCPIP_STACK_USE_ANNOUNCE
+#define TCPIP_ANNOUNCE_MAX_PAYLOAD 	512
+#define TCPIP_ANNOUNCE_TASK_RATE    333
+#define TCPIP_ANNOUNCE_NETWORK_DIRECTED_BCAST             			false
 
 
 
