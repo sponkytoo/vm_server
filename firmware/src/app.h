@@ -78,6 +78,13 @@
 typedef enum
 {
     APP_START_CASE,
+            
+    /* the MAC Address is read from the external EE */
+    APP_TCPIP_INIT_MAC,
+    
+    /* TCP Stack will initialized with the unique MAC from the EE */
+    APP_TCPIP_INIT_TCPIP_STACK,      
+            
     /* In this state, the application waits for the initialization of the TCP/IP stack
      * to complete. */
     APP_TCPIP_WAIT_INIT,

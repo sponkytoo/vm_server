@@ -51,6 +51,7 @@
 #include "peripheral/tc/plib_tc0.h"
 #include "system/time/sys_time.h"
 #include "bsp/bsp.h"
+#include "peripheral/twihs/plib_twihs0.h"
 #include "peripheral/usart/plib_usart1.h"
 #include "library/tcpip/tcpip.h"
 #include "driver/gmac/drv_gmac.h"
